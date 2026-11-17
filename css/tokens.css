@@ -1,0 +1,41 @@
+/* Design tokens. Dark ("night ink") is the default; light ("paper") via the toggle. */
+:root {
+  --bg: #15130F;
+  --bg-raised: #1D1A15;
+  --text: #E8DFCC;
+  --text-muted: #A89F8C;
+  --rule: rgba(232, 223, 204, 0.22);
+
+  --red: #B23A2B;          /* hanko red: shapes only */
+  --red-text: #D9604F;     /* readable red for small text on this background */
+  --indigo: #8FB0C4;
+  --moss: #A9AD7C;
+  --slash-opacity: 1;
+  --grain-opacity: 0.10;
+  --groove-opacity: 0.20;
+
+  --font-display: "Shippori Mincho", "Zen Old Mincho", "Hiragino Mincho ProN", Georgia, serif;
+  --font-body: "IBM Plex Sans", "Segoe UI", system-ui, sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, Consolas, monospace;
+
+  --beat: 706ms;           /* one beat at 85 BPM */
+  --ease: cubic-bezier(0.22, 0.61, 0.36, 1);
+
+  --gutter: clamp(1rem, 4vw, 3rem);
+  --max: 72rem;
+}
+
+:root[data-theme="light"] {
+  --bg: #EFE6D2;
+  --bg-raised: #E6DCC5;
+  --text: #1C1A17;
+  --text-muted: #5A5448;
+  --rule: rgba(28, 26, 23, 0.28);
+
+  --red-text: #B23A2B;
+  --indigo: #2F4A5C;
+  --moss: #55593A;
+  --slash-opacity: 0.8;
+  --grain-opacity: 0.16;
+  --groove-opacity: 0.26;
+}
