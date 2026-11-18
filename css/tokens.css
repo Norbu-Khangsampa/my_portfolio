@@ -1,41 +1,99 @@
-/* Design tokens. Dark ("night ink") is the default; light ("paper") via the toggle. */
+/* Design tokens.
+   Light = washi paper and sumi ink. Dark = late-night session on deep ink-blue.
+   The theme follows the system setting; the toggle sets data-theme to override it.
+   All text pairs below pass WCAG AA on --bg and --bg-raised. */
 :root {
-  --bg: #15130F;
-  --bg-raised: #1D1A15;
-  --text: #E8DFCC;
-  --text-muted: #A89F8C;
-  --rule: rgba(232, 223, 204, 0.22);
+  /* Palette: raw colours */
+  --washi: #E9E6DE;
+  --washi-deep: #DFDBD1;
+  --sumi: #1E1B18;
+  --sumi-soft: #57524A;
+  --vermilion: #C8402A;        /* seal red: shapes and large marks only */
+  --vermilion-ink: #A8311F;    /* readable vermilion for small text on washi */
+  --aizome: #24456A;           /* indigo */
+  --ochre: #6E5520;            /* faded gold, darkened for text on washi */
 
-  --red: #B23A2B;          /* hanko red: shapes only */
-  --red-text: #D9604F;     /* readable red for small text on this background */
-  --indigo: #8FB0C4;
-  --moss: #A9AD7C;
-  --slash-opacity: 1;
-  --grain-opacity: 0.10;
-  --groove-opacity: 0.20;
+  --night: #111A27;
+  --night-deep: #172233;
+  --paper: #E7E1D4;
+  --paper-soft: #A9AEB3;
+  --vermilion-glow: #EE7A62;
+  --aizome-light: #93AFD0;
+  --ochre-light: #CFA960;
+  --seal-paper: #F2EEE6;       /* initials on the seal, both themes */
 
-  --font-display: "Shippori Mincho", "Zen Old Mincho", "Hiragino Mincho ProN", Georgia, serif;
-  --font-body: "IBM Plex Sans", "Segoe UI", system-ui, sans-serif;
-  --font-mono: "IBM Plex Mono", ui-monospace, Consolas, monospace;
+  /* Semantic: light theme */
+  --bg: var(--washi);
+  --bg-raised: var(--washi-deep);
+  --text: var(--sumi);
+  --text-muted: var(--sumi-soft);
+  --rule: rgba(30, 27, 24, 0.24);
+  --accent: var(--vermilion);
+  --accent-text: var(--vermilion-ink);
+  --link: var(--aizome);
+  --gold: var(--ochre);
+  --on-accent: var(--seal-paper);
+  --ok: var(--aizome);
+  --grain-opacity: 0.22;
+  --groove-opacity: 0.28;
+  --slash-opacity: 0.85;
 
-  --beat: 706ms;           /* one beat at 85 BPM */
+  /* Type */
+  --font-display: "Shippori Mincho B1", "Shippori Mincho", "Hiragino Mincho ProN", "Yu Mincho", "Noto Serif JP", Georgia, serif;
+  --font-body: "Syne", "Zen Kaku Gothic New", "Hiragino Sans", "Yu Gothic", "Segoe UI", sans-serif;
+  --font-mono: "IBM Plex Mono", "SFMono-Regular", Consolas, "Liberation Mono", monospace;
+
+  /* One type scale: ratio 1.25 on a 17px root */
+  --step--2: 0.72rem;
+  --step--1: 0.85rem;
+  --step-0: 1rem;
+  --step-1: 1.25rem;
+  --step-2: 1.563rem;
+  --step-3: 1.953rem;
+  --step-4: 2.441rem;
+  --step-5: 3.052rem;
+  --step-6: 3.815rem;
+  --step-7: 4.768rem;
+  --step-8: 5.96rem;
+  --measure: 65ch;
+
+  /* Motion: slow and calm */
+  --beat: 706ms;               /* one beat at 85 BPM */
   --ease: cubic-bezier(0.22, 0.61, 0.36, 1);
 
+  /* Layout */
   --gutter: clamp(1rem, 4vw, 3rem);
-  --max: 72rem;
+  --max: 80rem;
 }
 
-:root[data-theme="light"] {
-  --bg: #EFE6D2;
-  --bg-raised: #E6DCC5;
-  --text: #1C1A17;
-  --text-muted: #5A5448;
-  --rule: rgba(28, 26, 23, 0.28);
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: var(--night);
+    --bg-raised: var(--night-deep);
+    --text: var(--paper);
+    --text-muted: var(--paper-soft);
+    --rule: rgba(231, 225, 212, 0.2);
+    --accent-text: var(--vermilion-glow);
+    --link: var(--aizome-light);
+    --gold: var(--ochre-light);
+    --ok: var(--aizome-light);
+    --grain-opacity: 0.12;
+    --groove-opacity: 0.22;
+    --slash-opacity: 1;
+  }
+}
 
-  --red-text: #B23A2B;
-  --indigo: #2F4A5C;
-  --moss: #55593A;
-  --slash-opacity: 0.8;
-  --grain-opacity: 0.16;
-  --groove-opacity: 0.26;
+:root[data-theme="dark"] {
+  --bg: var(--night);
+  --bg-raised: var(--night-deep);
+  --text: var(--paper);
+  --text-muted: var(--paper-soft);
+  --rule: rgba(231, 225, 212, 0.2);
+  --accent-text: var(--vermilion-glow);
+  --link: var(--aizome-light);
+  --gold: var(--ochre-light);
+  --ok: var(--aizome-light);
+  --grain-opacity: 0.12;
+  --groove-opacity: 0.22;
+  --slash-opacity: 1;
 }

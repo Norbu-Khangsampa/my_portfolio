@@ -1,15 +1,15 @@
 /* ---------- Base ---------- */
 *, *::before, *::after { box-sizing: border-box; }
 
-html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+html { font-size: 106.25%; scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }   /* 1rem = 17px */
 
 body {
   margin: 0;
   background: var(--bg);
   color: var(--text);
   font-family: var(--font-body);
-  font-size: 1.0625rem;      /* 17px */
-  line-height: 1.6;
+  font-size: var(--step-0);
+  line-height: 1.7;
   transition: background-color var(--beat) var(--ease), color var(--beat) var(--ease);
 }
 
@@ -28,13 +28,14 @@ body::after {
 a { color: inherit; }
 
 :focus-visible {
-  outline: 2px solid var(--red-text);
+  outline: 2px solid var(--accent-text);
   outline-offset: 3px;
 }
 
 .mono {
   font-family: var(--font-mono);
-  font-size: 0.78rem;
+  font-size: var(--step--2);
+  font-variant-numeric: tabular-nums;
   letter-spacing: 0.12em;
   text-transform: uppercase;
 }
@@ -51,6 +52,10 @@ a { color: inherit; }
 .skip:focus { left: 0; }
 
 .svg-defs { position: absolute; width: 0; height: 0; }
+
+/* Inline SVG colours come from tokens, never hard-coded */
+.fill-accent { fill: var(--accent); }
+.stroke-on-accent { stroke: var(--on-accent); }
 
 /* ---------- Header ---------- */
 .site-header {
@@ -79,7 +84,7 @@ a { color: inherit; }
 .hanko text {
   font-family: var(--font-display);
   font-weight: 800;
-  fill: #EFE6D2;
+  fill: var(--on-accent);
 }
 
 .site-nav {
@@ -95,7 +100,7 @@ a { color: inherit; }
   transition: border-color var(--beat) var(--ease);
 }
 .site-nav a:hover,
-.site-nav a[aria-current="true"] { border-bottom-color: var(--red); }
+.site-nav a[aria-current="true"] { border-bottom-color: var(--accent); }
 
 .theme-toggle {
   font: inherit;
@@ -174,7 +179,7 @@ a { color: inherit; }
   opacity: var(--slash-opacity);
   overflow: visible;
 }
-.slash path { fill: var(--red); }
+.slash path { fill: var(--accent); }
 
 .hero-pitch {
   max-width: 34rem;
@@ -207,7 +212,7 @@ a { color: inherit; }
 }
 a.btn:hover { background: var(--text); color: var(--bg); }
 .btn-primary { background: var(--text); color: var(--bg); }
-a.btn-primary:hover { background: var(--red); border-color: var(--red); color: #EFE6D2; }
+a.btn-primary:hover { background: var(--accent); border-color: var(--accent); color: var(--on-accent); }
 .btn[aria-disabled="true"] {
   border-style: dashed;
   border-color: var(--rule);
@@ -234,8 +239,8 @@ a.btn-primary:hover { background: var(--red); border-color: var(--red); color: #
   animation: spin 48s linear infinite;
 }
 .vinyl .grooves { opacity: var(--groove-opacity); }
-.vinyl .label-text { font-family: var(--font-mono); fill: #EFE6D2; letter-spacing: 0.14em; }
-.vinyl .label-name { font-family: var(--font-display); font-weight: 800; fill: #EFE6D2; }
+.vinyl .label-text { font-family: var(--font-mono); fill: var(--on-accent); letter-spacing: 0.14em; }
+.vinyl .label-name { font-family: var(--font-display); font-weight: 800; fill: var(--on-accent); }
 
 @keyframes spin { to { transform: rotate(360deg); } }
 
@@ -255,12 +260,12 @@ a.btn-primary:hover { background: var(--red); border-color: var(--red); color: #
 .now-dot {
   width: 0.5rem;
   height: 0.5rem;
-  background: var(--red);
+  background: var(--accent);
   animation: pulse calc(var(--beat) * 2) var(--ease) infinite;
 }
 @keyframes pulse { 50% { opacity: 0.25; } }
 .now a { text-decoration: none; border-bottom: 1px solid var(--rule); padding: 0.3rem 0; }
-.now a:hover { border-bottom-color: var(--red); }
+.now a:hover { border-bottom-color: var(--accent); }
 .now-end { margin-left: auto; color: var(--text-muted); }
 
 /* ---------- Motion ---------- */
@@ -335,7 +340,7 @@ a.btn-primary:hover { background: var(--red); border-color: var(--red); color: #
   margin: 0;
   padding-bottom: 0.9rem;
   font-family: var(--font-display);
-  font-weight: 700;
+  font-weight: 800;
   font-size: clamp(1.8rem, 4.2vw, 3.1rem);
   line-height: 1.15;
   text-wrap: balance;
@@ -352,7 +357,7 @@ a.btn-primary:hover { background: var(--red); border-color: var(--red); color: #
   overflow: visible;
 }
 .stroke path { fill: var(--text); }
-.stroke-red path { fill: var(--red); }
+.stroke-red path { fill: var(--accent); }
 
 .status {
   display: flex;
@@ -368,7 +373,7 @@ a.btn-primary:hover { background: var(--red); border-color: var(--red); color: #
   height: 0.5rem;
   background: var(--text-muted);
 }
-.status-ok { background: var(--moss); }
+.status-ok { background: var(--ok); }
 
 .lede {
   max-width: 44rem;
@@ -406,13 +411,13 @@ code {
   border: 1.5px solid var(--text);
   background: var(--bg);
 }
-.node-edge { border-color: var(--red); box-shadow: inset 0 0 0 1px var(--red); }
+.node-edge { border-color: var(--accent); box-shadow: inset 0 0 0 1px var(--accent); }
 .node-layer { margin: 0 0 0.5rem; color: var(--text-muted); }
 .node h3 {
   margin: 0 0 0.4rem;
   font-family: var(--font-display);
   font-size: 1.3rem;
-  font-weight: 700;
+  font-weight: 800;
   line-height: 1.2;
 }
 .node p:last-child { margin: 0; font-size: 0.95rem; line-height: 1.5; }
@@ -445,7 +450,7 @@ code {
   margin-top: 3rem;
   padding: 1.6rem 1.8rem;
   border: 1.5px solid var(--text);
-  border-left: 0.5rem solid var(--red);
+  border-left: 0.5rem solid var(--accent);
   background: var(--bg-raised);
 }
 .failsafe-num {
@@ -480,7 +485,7 @@ code {
   padding: 1.2rem 0;
   border-bottom: 1px solid var(--rule);
 }
-.problem-n { grid-row: span 2; margin: 0.35rem 0 0; color: var(--red-text); }
+.problem-n { grid-row: span 2; margin: 0.35rem 0 0; color: var(--accent-text); }
 .problems h4 {
   margin: 0 0 0.35rem;
   font-family: var(--font-display);
@@ -544,7 +549,7 @@ code {
   padding-top: 1.2rem;
   border-top: 1px solid var(--rule);
 }
-.next .mono { margin-right: 0.8rem; color: var(--red-text); }
+.next .mono { margin-right: 0.8rem; color: var(--accent-text); }
 
 .plain { margin: 0; padding: 0; list-style: none; }
 .plain li {
