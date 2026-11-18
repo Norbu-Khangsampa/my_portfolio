@@ -1,19 +1,20 @@
 /* ---------- Base ---------- */
 *, *::before, *::after { box-sizing: border-box; }
 
-html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+html { font-size: 106.25%; scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }   /* 1rem = 17px */
 
 body {
   margin: 0;
   background: var(--bg);
   color: var(--text);
   font-family: var(--font-body);
-  font-size: 1.0625rem;      /* 17px */
-  line-height: 1.6;
+  font-size: var(--step-0);
+  line-height: 1.7;
+  overflow-x: clip;
   transition: background-color var(--beat) var(--ease), color var(--beat) var(--ease);
 }
 
-/* Paper grain / film noise over everything */
+/* Paper grain over everything */
 body::after {
   content: "";
   position: fixed;
@@ -28,13 +29,16 @@ body::after {
 a { color: inherit; }
 
 :focus-visible {
-  outline: 2px solid var(--red-text);
+  outline: 2px solid var(--accent-text);
   outline-offset: 3px;
 }
 
+h1, h2, h3, h4 { overflow-wrap: break-word; }
+
 .mono {
   font-family: var(--font-mono);
-  font-size: 0.78rem;
+  font-size: var(--step--2);
+  font-variant-numeric: tabular-nums;
   letter-spacing: 0.12em;
   text-transform: uppercase;
 }
@@ -52,6 +56,42 @@ a { color: inherit; }
 
 .svg-defs { position: absolute; width: 0; height: 0; }
 
+/* Inline SVG colours come from tokens, never hard-coded */
+.fill-accent { fill: var(--accent); }
+.stroke-on-accent { stroke: var(--on-accent); }
+.stroke-gold { stroke: var(--gold); }
+
+/* ---------- Grid ----------
+   Twelve columns. Columns 1–2 hold the vertical section label;
+   content sits in 3–10 or narrower, leaving the right side open on purpose. */
+.frame {
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  column-gap: clamp(1rem, 2.2vw, 2rem);
+  max-width: var(--max);
+  margin: 0 auto;
+  padding: 0 var(--gutter);
+}
+.body        { grid-column: 3 / 11; min-width: 0; }
+.body-wide   { grid-column: 3 / 13; }
+.body-narrow { grid-column: 3 / 9; }
+.body-offset { grid-column: 5 / 11; }
+
+.v-label {
+  grid-column: 1 / 3;
+  grid-row: 1;
+  align-self: start;
+  justify-self: start;
+  position: sticky;
+  top: 6rem;
+  margin: 0.4rem 0 0;
+  padding-left: 0.7rem;
+  border-left: 1px solid var(--accent);
+  writing-mode: vertical-rl;
+  white-space: nowrap;
+  color: var(--text-muted);
+}
+
 /* ---------- Header ---------- */
 .site-header {
   position: sticky;
@@ -63,23 +103,24 @@ a { color: inherit; }
   justify-content: space-between;
   gap: 0.5rem 1.5rem;
   padding: 0.7rem var(--gutter);
-  background: color-mix(in srgb, var(--bg) 92%, transparent);
+  background: color-mix(in srgb, var(--bg) 94%, transparent);
   border-bottom: 1px solid var(--rule);
 }
 
 .hanko {
   display: block;
-  width: 2.75rem;
-  height: 2.75rem;
+  width: 2.6rem;
+  height: 2.6rem;
   transform: rotate(-4deg);
   transition: transform var(--beat) var(--ease);
 }
 .hanko:hover { transform: rotate(0deg); }
 .hanko svg { display: block; width: 100%; height: 100%; }
-.hanko text {
-  font-family: var(--font-display);
-  font-weight: 800;
-  fill: #EFE6D2;
+.seal-mark {
+  fill: none;
+  stroke: var(--on-accent);
+  stroke-width: 3.2;
+  stroke-linecap: square;
 }
 
 .site-nav {
@@ -95,101 +136,81 @@ a { color: inherit; }
   transition: border-color var(--beat) var(--ease);
 }
 .site-nav a:hover,
-.site-nav a[aria-current="true"] { border-bottom-color: var(--red); }
+.site-nav a[aria-current="true"] { border-bottom-color: var(--accent); }
 
 .theme-toggle {
   font: inherit;
   font-family: var(--font-mono);
-  font-size: 0.78rem;
+  font-size: var(--step--2);
   letter-spacing: 0.12em;
   text-transform: uppercase;
   color: var(--text);
   background: none;
   border: 1px solid var(--rule);
   padding: 0.45rem 0.7rem;
+  min-height: 2.2rem;
   cursor: pointer;
 }
 .theme-toggle:hover { border-color: var(--text); }
 
-/* ---------- Hero ---------- */
+/* ---------- Hero ----------
+   Sized to its content, not the viewport. Name sits left; the record
+   sits off the right edge, leaving open space between them. */
 .hero {
   position: relative;
   overflow: hidden;
-  min-height: min(calc(100svh - 4.2rem), 54rem);
-  display: flex;
-  flex-direction: column;
-}
-/* Holds the record and the text; clips the record so it never reaches the strip below */
-.hero-stage {
-  position: relative;
-  flex: 1;
-  overflow: hidden;
   isolation: isolate;
 }
-
-.hero-body {
+.hero-frame {
   position: relative;
-  width: 100%;
-  max-width: var(--max);
-  margin: 0 auto;
-  padding: clamp(2.5rem, 9vh, 6rem) var(--gutter) 3rem;
-  padding-left: calc(var(--gutter) + 3.5rem);
+  padding-top: clamp(3rem, 9vh, 6.5rem);
+  padding-bottom: clamp(3rem, 8vh, 5.5rem);
 }
+.hero-side { top: auto; position: relative; }
 
-/* Vertical side text: decoration only */
-.hero-side {
-  position: absolute;
-  left: var(--gutter);
-  top: clamp(2.5rem, 9vh, 6rem);
-  writing-mode: vertical-rl;
-  color: var(--text-muted);
-  white-space: nowrap;
-  padding-top: 0.2rem;
-  border-left: 1px solid var(--rule);
-  padding-left: 0.6rem;
-}
+.hero-body { grid-column: 3 / 10; position: relative; }
 
-.hero-kicker { margin: 0 0 1.4rem; color: var(--text-muted); }
+.hero-kicker { margin: 0 0 1.6rem; color: var(--text-muted); }
 
 .hero-name {
   position: relative;
   margin: 0;
   font-family: var(--font-display);
   font-weight: 800;
-  font-size: clamp(2.6rem, 8.6vw, 7.25rem);
-  line-height: 0.98;
+  font-size: clamp(var(--step-5), 7.6vw, var(--step-8));
+  line-height: 1;
   letter-spacing: -0.01em;
 }
-.hero-name .line { display: block; white-space: nowrap; }
+.hero-name .line { display: block; }
 
-/* Red brush slash behind the name */
+/* Brush slash behind the name */
 .slash {
   position: absolute;
   z-index: -1;
   left: -3%;
-  top: 38%;
-  width: min(70%, 40rem);
+  top: 40%;
+  width: min(72%, 36rem);
   height: auto;
   transform: rotate(-3deg);
   opacity: var(--slash-opacity);
   overflow: visible;
 }
-.slash path { fill: var(--red); }
+.slash path { fill: var(--accent); }
 
 .hero-pitch {
-  max-width: 34rem;
-  margin: 2.2rem 0 0.6rem;
-  font-size: clamp(1.1rem, 1.6vw, 1.3rem);
-  line-height: 1.5;
+  max-width: 30rem;
+  margin: 2.4rem 0 0.6rem;
+  font-size: var(--step-1);
+  line-height: 1.55;
 }
-.hero-seeking { max-width: 34rem; margin: 0; color: var(--text-muted); }
-.hero-seeking strong { color: var(--text); font-weight: 500; }
+.hero-seeking { max-width: 30rem; margin: 0; color: var(--text-muted); }
+.hero-seeking strong { color: var(--text); font-weight: 600; }
 
-.hero-actions {
+.actions {
   display: flex;
   flex-wrap: wrap;
   gap: 0.7rem;
-  margin: 2rem 0 0;
+  margin: 2.2rem 0 0;
   padding: 0;
   list-style: none;
 }
@@ -203,11 +224,11 @@ a { color: inherit; }
   background: var(--bg);
   color: var(--text);
   text-decoration: none;
-  transition: background-color calc(var(--beat) / 2) var(--ease), color calc(var(--beat) / 2) var(--ease);
+  transition: background-color calc(var(--beat) / 2) var(--ease), color calc(var(--beat) / 2) var(--ease), border-color calc(var(--beat) / 2) var(--ease);
 }
 a.btn:hover { background: var(--text); color: var(--bg); }
 .btn-primary { background: var(--text); color: var(--bg); }
-a.btn-primary:hover { background: var(--red); border-color: var(--red); color: #EFE6D2; }
+a.btn-primary:hover { background: var(--accent); border-color: var(--accent); color: var(--on-accent); }
 .btn[aria-disabled="true"] {
   border-style: dashed;
   border-color: var(--rule);
@@ -215,27 +236,29 @@ a.btn-primary:hover { background: var(--red); border-color: var(--red); color: #
   cursor: default;
 }
 
-/* Vinyl record, half off the right edge */
+/* Vinyl record, part off the right edge */
 .vinyl {
-  --v: min(82vh, 62vw);
+  --v: clamp(18rem, 40vw, 34rem);
   position: absolute;
   z-index: -2;
-  right: calc(var(--v) * -0.32);
+  right: calc(var(--v) * -0.3);
   top: 50%;
   width: var(--v);
   height: var(--v);
-  transform: translateY(-52%);
+  transform: translateY(-50%);
   color: var(--text);
 }
+/* The record only turns while the pointer rests on it, and stops where it is */
 .vinyl svg {
   display: block;
   width: 100%;
   height: 100%;
-  animation: spin 48s linear infinite;
+  animation: spin 16s linear infinite paused;
 }
+.vinyl:hover svg { animation-play-state: running; }
 .vinyl .grooves { opacity: var(--groove-opacity); }
-.vinyl .label-text { font-family: var(--font-mono); fill: #EFE6D2; letter-spacing: 0.14em; }
-.vinyl .label-name { font-family: var(--font-display); font-weight: 800; fill: #EFE6D2; }
+.vinyl .label-text { font-family: var(--font-mono); fill: var(--on-accent); letter-spacing: 0.14em; }
+.vinyl .label-name { font-family: var(--font-display); font-weight: 800; fill: var(--on-accent); }
 
 @keyframes spin { to { transform: rotate(360deg); } }
 
@@ -247,37 +270,45 @@ a.btn-primary:hover { background: var(--red); border-color: var(--red); color: #
   flex-wrap: wrap;
   align-items: center;
   gap: 0.4rem 1.2rem;
+  margin: 0;
   padding: 0.9rem var(--gutter);
   border-top: 1px solid var(--rule);
   background: var(--bg);
 }
 .now-label { display: inline-flex; align-items: center; gap: 0.6rem; color: var(--text-muted); }
-.now-dot {
-  width: 0.5rem;
-  height: 0.5rem;
-  background: var(--red);
-  animation: pulse calc(var(--beat) * 2) var(--ease) infinite;
-}
-@keyframes pulse { 50% { opacity: 0.25; } }
+.now-dot { width: 0.5rem; height: 0.5rem; background: var(--accent); }
 .now a { text-decoration: none; border-bottom: 1px solid var(--rule); padding: 0.3rem 0; }
-.now a:hover { border-bottom-color: var(--red); }
-.now-end { margin-left: auto; color: var(--text-muted); }
+.now a:hover { border-bottom-color: var(--accent); }
 
 /* ---------- Motion ---------- */
-/* Hero items rise in on load, half a beat apart. Only when JS is present. */
+/* Brush strokes draw in left to right: the slash on load, title strokes on scroll.
+   Without JS they are simply there. */
+.js .slash {
+  clip-path: inset(0 100% 0 0);
+  animation: brush calc(var(--beat) * 2.2) var(--ease) calc(var(--beat) * 1.2) forwards;
+}
+@keyframes brush { to { clip-path: inset(0 0 0 0); } }
+
+.js [data-reveal] .stroke {
+  clip-path: inset(0 100% 0 0);
+  transition: clip-path calc(var(--beat) * 2) var(--ease) calc(var(--beat) / 2);
+}
+.js [data-reveal].is-in .stroke { clip-path: inset(0 0 0 0); }
+
+/* Hero items fade in on load. Only when JS is present. */
 .js .rise {
   opacity: 0;
-  transform: translateY(12px);
-  animation: rise var(--beat) var(--ease) forwards;
+  transform: translateY(10px);
+  animation: rise calc(var(--beat) * 1.4) var(--ease) forwards;
   animation-delay: calc(var(--i, 0) * var(--beat) / 2);
 }
 @keyframes rise { to { opacity: 1; transform: none; } }
 
-/* Sections below the hero fade in on scroll (class added by main.js) */
+/* Sections fade in on scroll (class added by main.js) */
 .js [data-reveal] {
   opacity: 0;
-  transform: translateY(12px);
-  transition: opacity var(--beat) var(--ease), transform var(--beat) var(--ease);
+  transform: translateY(10px);
+  transition: opacity calc(var(--beat) * 1.4) var(--ease), transform calc(var(--beat) * 1.4) var(--ease);
 }
 .js [data-reveal].is-in { opacity: 1; transform: none; }
 
@@ -288,36 +319,20 @@ a.btn-primary:hover { background: var(--red); border-color: var(--red); color: #
     transition: none !important;
   }
   .js .rise, .js [data-reveal] { opacity: 1; transform: none; }
-}
-
-/* ---------- Small screens ---------- */
-@media (max-width: 720px) {
-  .site-nav { width: 100%; gap: 0 0.85rem; font-size: 0.7rem; }
-  .theme-toggle { position: absolute; top: 0.85rem; right: var(--gutter); }
-  .hero { min-height: 0; }
-  .hero-side { display: none; }
-  .hero-body { padding-left: var(--gutter); padding-top: 3.5rem; }
-  .vinyl {
-    --v: 15rem;
-    top: 0;
-    right: -6.5rem;
-    transform: translateY(-38%);
-  }
-  .now-end { display: none; }
+  .js .slash, .js [data-reveal] .stroke { clip-path: none; }
 }
 
 /* ---------- Sections ---------- */
 .section {
-  padding: clamp(4rem, 11vh, 7.5rem) var(--gutter);
+  padding: clamp(4rem, 11vh, 7.5rem) 0;
   border-top: 1px solid var(--rule);
   scroll-margin-top: 4rem;
 }
 .section-alt { background: var(--bg-raised); }
-.wrap { max-width: var(--max); margin: 0 auto; }
-.wrap-narrow { max-width: 50rem; }
-#motor-testbed { scroll-margin-top: 6rem; }
+.section-joined { border-top: 0; padding-top: clamp(1rem, 4vh, 3rem); }
+.side { scroll-margin-top: 4rem; }
 
-.section-head { margin-bottom: 2rem; }
+.section-head { margin-bottom: 2.2rem; }
 
 .track {
   display: flex;
@@ -335,13 +350,12 @@ a.btn-primary:hover { background: var(--red); border-color: var(--red); color: #
   margin: 0;
   padding-bottom: 0.9rem;
   font-family: var(--font-display);
-  font-weight: 700;
-  font-size: clamp(1.8rem, 4.2vw, 3.1rem);
+  font-weight: 800;
+  font-size: clamp(var(--step-3), 4.2vw, var(--step-5));
   line-height: 1.15;
   text-wrap: balance;
 }
-.section-title-sm { font-size: clamp(1.6rem, 3.2vw, 2.3rem); }
-#research-title { font-size: clamp(1.5rem, 3vw, 2.2rem); }
+.section-title-sm { font-size: clamp(var(--step-2), 3vw, var(--step-4)); }
 
 .stroke {
   position: absolute;
@@ -352,7 +366,7 @@ a.btn-primary:hover { background: var(--red); border-color: var(--red); color: #
   overflow: visible;
 }
 .stroke path { fill: var(--text); }
-.stroke-red path { fill: var(--red); }
+.stroke-red path { fill: var(--accent); }
 
 .status {
   display: flex;
@@ -368,15 +382,15 @@ a.btn-primary:hover { background: var(--red); border-color: var(--red); color: #
   height: 0.5rem;
   background: var(--text-muted);
 }
-.status-ok { background: var(--moss); }
+.status-ok { background: var(--ok); }
 
 .lede {
-  max-width: 44rem;
+  max-width: var(--measure);
   margin: 0 0 1.5rem;
-  font-size: clamp(1.1rem, 1.5vw, 1.25rem);
-  line-height: 1.6;
+  font-size: var(--step-1);
+  line-height: 1.65;
 }
-.section p { max-width: 44rem; }
+.section p { max-width: var(--measure); }
 
 .sub {
   margin: 3rem 0 1rem;
@@ -393,7 +407,7 @@ code {
   text-transform: none;
 }
 
-/* Architecture diagram */
+/* Architecture diagram: flat blocks joined like a signal chain */
 .diagram { margin: 3rem 0 0; }
 .diagram-row {
   display: grid;
@@ -403,19 +417,19 @@ code {
 }
 .node {
   padding: 1.1rem 1.2rem 1.2rem;
-  border: 1.5px solid var(--text);
-  background: var(--bg);
+  background: var(--bg-raised);
+  border-top: 2px solid var(--text);
 }
-.node-edge { border-color: var(--red); box-shadow: inset 0 0 0 1px var(--red); }
+.node-edge { border-top-color: var(--accent); }
 .node-layer { margin: 0 0 0.5rem; color: var(--text-muted); }
 .node h3 {
   margin: 0 0 0.4rem;
   font-family: var(--font-display);
-  font-size: 1.3rem;
-  font-weight: 700;
+  font-size: var(--step-1);
+  font-weight: 800;
   line-height: 1.2;
 }
-.node p:last-child { margin: 0; font-size: 0.95rem; line-height: 1.5; }
+.node p:last-child { margin: 0; font-size: var(--step--1); line-height: 1.6; }
 .link {
   display: flex;
   flex-direction: column;
@@ -425,14 +439,14 @@ code {
   min-width: 6rem;
   max-width: 11rem;
   text-align: center;
-  font-size: 0.72rem;
   line-height: 1.6;
   color: var(--text-muted);
 }
-.link svg { width: 4.5rem; height: 0.7rem; color: var(--text); }
+.link svg { width: 4.5rem; height: 0.7rem; color: var(--link); }
 .diagram figcaption {
   margin-top: 1rem;
-  font-size: 0.95rem;
+  max-width: var(--measure);
+  font-size: var(--step--1);
   color: var(--text-muted);
 }
 
@@ -442,15 +456,13 @@ code {
   grid-template-columns: auto 1fr;
   gap: 1rem 2.5rem;
   align-items: center;
-  margin-top: 3rem;
-  padding: 1.6rem 1.8rem;
-  border: 1.5px solid var(--text);
-  border-left: 0.5rem solid var(--red);
-  background: var(--bg-raised);
+  margin-top: 3.5rem;
+  padding: 1.6rem 0 1.6rem 1.6rem;
+  border-left: 0.4rem solid var(--accent);
 }
 .failsafe-num {
   margin: 0;
-  font-size: clamp(2.2rem, 5vw, 3.6rem);
+  font-size: clamp(var(--step-4), 5vw, var(--step-6));
   font-weight: 500;
   letter-spacing: -0.02em;
   line-height: 1;
@@ -460,14 +472,15 @@ code {
 .failsafe h3 {
   margin: 0 0 0.4rem;
   font-family: var(--font-display);
-  font-size: 1.4rem;
+  font-weight: 800;
+  font-size: var(--step-2);
 }
 .failsafe p { margin: 0; }
 
 /* Problems solved */
 .problems {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 0 2.5rem;
   margin: 0;
   padding: 0;
@@ -475,27 +488,28 @@ code {
 }
 .problems li {
   display: grid;
-  grid-template-columns: 2.6rem 1fr;
+  grid-template-columns: 3.2rem 1fr;
   column-gap: 0.5rem;
   padding: 1.2rem 0;
   border-bottom: 1px solid var(--rule);
 }
-.problem-n { grid-row: span 2; margin: 0.35rem 0 0; color: var(--red-text); }
+.problem-n { grid-row: span 2; margin: 0.35rem 0 0; color: var(--accent-text); }
 .problems h4 {
   margin: 0 0 0.35rem;
   font-family: var(--font-display);
-  font-size: 1.2rem;
+  font-weight: 800;
+  font-size: var(--step-1);
   line-height: 1.3;
 }
-.problems li > p:last-child { margin: 0; font-size: 0.98rem; }
+.problems li > p:last-child { margin: 0; font-size: var(--step--1); line-height: 1.65; }
 
 .two-col {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 0 2.5rem;
 }
 
-/* Spec list, set like a track listing */
+/* Spec list, set like track credits */
 .spec { margin: 0; padding: 0; list-style: none; }
 .spec li {
   display: grid;
@@ -506,18 +520,32 @@ code {
   line-height: 1.6;
 }
 .spec li span:first-child { color: var(--text-muted); }
-.spec li span:last-child { text-transform: none; letter-spacing: 0.03em; font-size: 0.85rem; }
+.spec li span:last-child { text-transform: none; letter-spacing: 0.03em; font-size: var(--step--1); }
 
+/* Tags: a run-on credit line, not boxed chips */
+/* Every tag carries a leading dot. The list is pulled left by one dot's width
+   and that strip is clipped, so the dot at the start of each line is hidden
+   wherever the line happens to wrap. */
 .tags {
+  --sep: 1.6rem;
   display: flex;
   flex-wrap: wrap;
-  gap: 0.5rem;
-  margin: 0;
+  gap: 0.35rem 0;
+  margin: 0 0 0 calc(-1 * var(--sep));
   padding: 0;
   list-style: none;
+  line-height: 1.9;
+  clip-path: inset(0 0 0 var(--sep));
 }
-.tags li { padding: 0.3rem 0.6rem; border: 1px solid var(--rule); }
-.wrap-narrow > .tags { margin-top: 2.5rem; }
+.tags li::before {
+  content: "·";
+  content: "·" / "";
+  display: inline-block;
+  width: var(--sep);
+  text-align: center;
+  color: var(--accent-text);
+}
+.tags-gap { margin-top: 2.5rem; }
 
 /* Placeholders for media that doesn't exist yet */
 .slots {
@@ -537,14 +565,14 @@ code {
   line-height: 1.5;
 }
 .slots li span { color: var(--text-muted); }
-.wrap-narrow > .slots { margin-top: 1rem; }
+.slots-gap { margin-top: 1.5rem; }
 
 .next {
   margin: 2.5rem 0 0;
   padding-top: 1.2rem;
   border-top: 1px solid var(--rule);
 }
-.next .mono { margin-right: 0.8rem; color: var(--red-text); }
+.next .mono { margin-right: 0.8rem; color: var(--accent-text); }
 
 .plain { margin: 0; padding: 0; list-style: none; }
 .plain li {
@@ -556,24 +584,40 @@ code {
   content: "";
   position: absolute;
   left: 0;
-  top: 1.15rem;
+  top: 1.25rem;
   width: 0.4rem;
   height: 1.5px;
   background: var(--text-muted);
 }
 .note { color: var(--text-muted); font-size: 0.9em; }
 
-/* Liner notes */
+/* Liner notes credits */
 .credits {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 0 2.5rem;
 }
-.credits > div:last-child { grid-column: 1 / -1; }
+.credits-courses { grid-column: 1 / -1; }
 .credits .sub { margin-top: 2rem; }
 .course { margin: 0; line-height: 1.9; }
 
-.contact .hero-actions { margin-top: 1.5rem; }
+.contact .actions { margin-top: 1.5rem; }
+
+/* ---------- Seigaiha wave band (the page's one pattern) ---------- */
+.wave-band {
+  display: block;
+  width: 100%;
+  height: 4.5rem;
+  border-top: 1px solid var(--rule);
+}
+/* Plain class selectors: circles cloned through <use> don't match ancestor selectors */
+.scale-line {
+  fill: none;
+  stroke: var(--gold);
+  stroke-width: 1;
+  stroke-opacity: 0.7;
+}
+.scale-fill { fill: var(--bg); }
 
 /* ---------- Footer ---------- */
 .site-footer {
@@ -585,18 +629,45 @@ code {
   border-top: 1px solid var(--rule);
   color: var(--text-muted);
 }
-.site-footer a { text-decoration: none; }
+.site-footer a { text-decoration: none; padding: 0.3rem 0; }
 .site-footer a:hover { color: var(--text); }
+
+/* ---------- Responsive ---------- */
+@media (max-width: 1100px) {
+  .body-narrow { grid-column: 3 / 11; }
+  .body-offset { grid-column: 4 / 12; }
+  .hero-body   { grid-column: 3 / 12; }
+}
 
 @media (max-width: 900px) {
   .diagram-row { grid-template-columns: 1fr; }
   .link { max-width: none; flex-direction: row; flex-wrap: wrap; padding: 0.4rem 0; }
   .link svg { transform: rotate(90deg); width: 2.6rem; }
-  .credits { grid-template-columns: repeat(2, 1fr); }
+  .credits { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
-@media (max-width: 720px) {
+
+/* Below tablet the grid collapses to one column and the
+   vertical label turns horizontal above its section. */
+@media (max-width: 767px) {
+  .frame { display: block; }
+  .v-label {
+    position: static;
+    writing-mode: horizontal-tb;
+    margin: 0 0 1.4rem;
+    padding: 0 0 0 0.6rem;
+  }
+  .hero-side { display: none; }
+  .site-nav { width: 100%; gap: 0 0.85rem; }
+  .theme-toggle { position: absolute; top: 0.85rem; right: var(--gutter); }
+  .vinyl {
+    --v: 13rem;
+    top: 0;
+    right: -6rem;
+    transform: translateY(-48%);
+  }
   .section { scroll-margin-top: 6rem; }
+  .side { scroll-margin-top: 6rem; }
   .problems, .two-col, .credits { grid-template-columns: 1fr; }
-  .failsafe { grid-template-columns: 1fr; padding: 1.3rem 1.2rem; }
+  .failsafe { grid-template-columns: 1fr; padding: 1.2rem 0 1.2rem 1.2rem; }
   .spec li { grid-template-columns: 6rem 1fr; }
 }

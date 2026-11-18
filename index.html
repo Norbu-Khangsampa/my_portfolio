@@ -5,10 +5,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Tenzin Norbu Gurung — Mechatronics Engineering</title>
   <meta name="description" content="Portfolio of Tenzin Norbu Gurung, Mechatronics Engineering undergraduate at Kent State University: embedded motion control, controls and IoT.">
-  <meta name="color-scheme" content="dark light">
+  <meta name="color-scheme" content="light dark">
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
 
-  <!-- Set theme before first paint; mark that JS is available -->
+  <!-- Apply a saved theme before first paint; mark that JS is available -->
   <script>
     (function () {
       var root = document.documentElement;
@@ -22,7 +22,7 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500&family=Shippori+Mincho:wght@500;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Shippori+Mincho+B1:wght@500;800&family=Syne:wght@400;500;600&display=swap" rel="stylesheet">
 
   <link rel="stylesheet" href="css/tokens.css">
   <link rel="stylesheet" href="css/style.css">
@@ -46,9 +46,13 @@
 
   <header class="site-header">
     <a class="hanko" href="#top" aria-label="Tenzin Norbu Gurung — back to top">
-      <svg viewBox="0 0 44 44" aria-hidden="true">
-        <rect x="2" y="2" width="40" height="40" fill="#B23A2B" filter="url(#rough-sm)"/>
-        <text x="22" y="27.5" text-anchor="middle" font-size="14.5" letter-spacing="0.5">TNG</text>
+      <!-- Hand-drawn seal: initials T and G cut out of a vermilion square -->
+      <svg viewBox="0 0 44 44" aria-hidden="true" focusable="false">
+        <g filter="url(#rough-sm)">
+          <rect x="2" y="2" width="40" height="40" rx="2" class="fill-accent"/>
+          <rect x="5.5" y="5.5" width="33" height="33" fill="none" class="stroke-on-accent" stroke-width="1.2"/>
+          <path class="seal-mark" d="M9 12.5h11.5M14.75 12.5V32M34.5 15.6C33.2 13.3 31 12.2 28.7 12.2c-4 0-6.2 4.4-6.2 9.8s2.2 9.8 6.2 9.8c3 0 5.6-2 5.6-5.2v-3.5h-5"/>
+        </g>
       </svg>
     </a>
     <nav class="site-nav mono" aria-label="Sections">
@@ -65,290 +69,302 @@
 
     <!-- ============ HERO ============ -->
     <section class="hero" id="top" aria-labelledby="hero-name">
+      <div class="frame hero-frame">
+        <p class="v-label hero-side mono" aria-hidden="true">Embedded · Controls · IoT</p>
 
-      <div class="hero-stage">
-      <div class="vinyl" aria-hidden="true">
-        <svg viewBox="0 0 400 400">
-          <g class="grooves" fill="none" stroke="currentColor">
-            <circle cx="200" cy="200" r="198" stroke-width="1.5"/>
-            <circle cx="200" cy="200" r="190" stroke-width="0.6"/>
-            <circle cx="200" cy="200" r="182" stroke-width="0.6"/>
-            <circle cx="200" cy="200" r="175" stroke-width="0.6"/>
-            <circle cx="200" cy="200" r="167" stroke-width="0.6"/>
-            <circle cx="200" cy="200" r="158" stroke-width="1.1"/>
-            <circle cx="200" cy="200" r="150" stroke-width="0.6"/>
-            <circle cx="200" cy="200" r="142" stroke-width="0.6"/>
-            <circle cx="200" cy="200" r="133" stroke-width="0.6"/>
-            <circle cx="200" cy="200" r="125" stroke-width="0.6"/>
-            <circle cx="200" cy="200" r="116" stroke-width="1.1"/>
-            <circle cx="200" cy="200" r="108" stroke-width="0.6"/>
-            <circle cx="200" cy="200" r="100" stroke-width="0.6"/>
-            <circle cx="200" cy="200" r="92" stroke-width="0.6"/>
-            <circle cx="200" cy="200" r="84" stroke-width="0.6"/>
-            <!-- light catching the grooves: makes the slow rotation visible -->
-            <circle cx="200" cy="200" r="171" stroke-width="3" stroke-dasharray="60 1014" stroke-linecap="round"/>
-            <circle cx="200" cy="200" r="129" stroke-width="3" stroke-dasharray="44 766" stroke-dashoffset="-380" stroke-linecap="round"/>
-          </g>
-          <circle cx="200" cy="200" r="62" fill="#B23A2B"/>
-          <circle cx="200" cy="200" r="56" fill="none" stroke="#EFE6D2" stroke-width="0.5" opacity="0.6"/>
-          <text class="label-name" x="200" y="186" text-anchor="middle" font-size="17">TNG</text>
-          <text class="label-text" x="200" y="226" text-anchor="middle" font-size="6.5">SIDE A · 2026</text>
-          <circle cx="200" cy="200" r="4.5" fill="var(--bg)"/>
-        </svg>
-      </div>
+        <div class="hero-body">
+          <p class="hero-kicker mono rise" style="--i:0">Mechatronics Engineering · Kent State · Class of 2028</p>
 
-      <div class="hero-body">
-        <p class="hero-side mono" aria-hidden="true">Embedded · Controls · IoT</p>
+          <h1 class="hero-name rise" id="hero-name" style="--i:1">
+            <svg class="slash" viewBox="0 0 600 120" aria-hidden="true" focusable="false">
+              <path filter="url(#rough)" d="M10 66 C 70 38, 160 30, 262 36 S 468 24, 590 40 L 596 60 C 528 62, 478 70, 420 78 S 204 98, 122 100 C 82 101, 34 106, 6 98 Z"/>
+            </svg>
+            <span class="line">Tenzin Norbu</span>
+            <span class="line">Gurung</span>
+          </h1>
 
-        <p class="hero-kicker mono rise" style="--i:0">Mechatronics Engineering · Kent State · Class of 2028</p>
+          <p class="hero-pitch rise" style="--i:2">
+            I build embedded motion-control systems: firmware at the motor, a gateway above it, and a fail-safe in between.
+          </p>
+          <p class="hero-seeking rise" style="--i:3">
+            Seeking <strong>summer 2027 internships and co-ops</strong> in automation, embedded systems and controls.
+          </p>
 
-        <h1 class="hero-name rise" id="hero-name" style="--i:1">
-          <svg class="slash" viewBox="0 0 600 120" aria-hidden="true" focusable="false">
-            <path filter="url(#rough)" d="M10 66 C 70 38, 160 30, 262 36 S 468 24, 590 40 L 596 60 C 528 62, 478 70, 420 78 S 204 98, 122 100 C 82 101, 34 106, 6 98 Z"/>
+          <ul class="actions mono rise" style="--i:4">
+            <li><a class="btn btn-primary" href="mailto:norbukhangsampa11@gmail.com">Email</a></li>
+            <li><a class="btn" href="https://www.linkedin.com/in/tenzin-gurung-b2abba362/" target="_blank" rel="noopener">LinkedIn</a></li>
+            <li><a class="btn" href="https://github.com/Norbu-Khangsampa" target="_blank" rel="noopener">GitHub</a></li>
+            <!-- TODO: when assets/resume.pdf exists, replace this span with:
+                 <a class="btn" href="assets/resume.pdf">Résumé</a> -->
+            <li><span class="btn" aria-disabled="true">Résumé · soon</span></li>
+          </ul>
+        </div>
+
+        <div class="vinyl" aria-hidden="true">
+          <svg viewBox="0 0 400 400">
+            <g class="grooves" fill="none" stroke="currentColor">
+              <circle cx="200" cy="200" r="198" stroke-width="1.5"/>
+              <circle cx="200" cy="200" r="190" stroke-width="0.6"/>
+              <circle cx="200" cy="200" r="182" stroke-width="0.6"/>
+              <circle cx="200" cy="200" r="175" stroke-width="0.6"/>
+              <circle cx="200" cy="200" r="167" stroke-width="0.6"/>
+              <circle cx="200" cy="200" r="158" stroke-width="1.1"/>
+              <circle cx="200" cy="200" r="150" stroke-width="0.6"/>
+              <circle cx="200" cy="200" r="142" stroke-width="0.6"/>
+              <circle cx="200" cy="200" r="133" stroke-width="0.6"/>
+              <circle cx="200" cy="200" r="125" stroke-width="0.6"/>
+              <circle cx="200" cy="200" r="116" stroke-width="1.1"/>
+              <circle cx="200" cy="200" r="108" stroke-width="0.6"/>
+              <circle cx="200" cy="200" r="100" stroke-width="0.6"/>
+              <circle cx="200" cy="200" r="92" stroke-width="0.6"/>
+              <circle cx="200" cy="200" r="84" stroke-width="0.6"/>
+              <!-- light catching the grooves: makes the rotation visible -->
+              <circle cx="200" cy="200" r="171" stroke-width="3" stroke-dasharray="60 1014" stroke-linecap="round"/>
+              <circle cx="200" cy="200" r="129" stroke-width="3" stroke-dasharray="44 766" stroke-dashoffset="-380" stroke-linecap="round"/>
+            </g>
+            <circle cx="200" cy="200" r="68" fill="none" class="stroke-gold" stroke-width="1.5"/>
+            <circle cx="200" cy="200" r="62" class="fill-accent"/>
+            <circle cx="200" cy="200" r="56" fill="none" class="stroke-on-accent" stroke-width="0.5" opacity="0.6"/>
+            <text class="label-name" x="200" y="186" text-anchor="middle" font-size="17">TG</text>
+            <text class="label-text" x="200" y="226" text-anchor="middle" font-size="6.5">SIDE A · 2026</text>
+            <circle cx="200" cy="200" r="4.5" fill="var(--bg)"/>
           </svg>
-          <span class="line">Tenzin Norbu</span>
-          <span class="line">Gurung</span>
-        </h1>
-
-        <p class="hero-pitch rise" style="--i:2">
-          I build embedded motion-control systems: firmware at the motor, a gateway above it, and a fail-safe in between.
-        </p>
-        <p class="hero-seeking rise" style="--i:3">
-          Seeking <strong>summer 2027 internships and co-ops</strong> in automation, embedded systems and controls.
-        </p>
-
-        <ul class="hero-actions mono rise" style="--i:4">
-          <li><a class="btn btn-primary" href="mailto:norbukhangsampa11@gmail.com">Email</a></li>
-          <li><a class="btn" href="https://www.linkedin.com/in/tenzin-gurung-b2abba362/" target="_blank" rel="noopener">LinkedIn</a></li>
-          <li><a class="btn" href="https://github.com/Norbu-Khangsampa" target="_blank" rel="noopener">GitHub</a></li>
-          <!-- TODO: when assets/resume.pdf exists, replace this span with:
-               <a class="btn" href="assets/resume.pdf">Résumé</a> -->
-          <li><span class="btn" aria-disabled="true">Résumé · soon</span></li>
-        </ul>
+        </div>
       </div>
-
-      </div><!-- /.hero-stage -->
 
       <p class="now mono rise" style="--i:5">
         <span class="now-label"><span class="now-dot" aria-hidden="true"></span>Now building</span>
-        <a href="#motor-testbed">01 — Motor Testbed · 2026</a>
-        <span class="now-end" aria-hidden="true">Scroll ↓</span>
+        <a href="#motor-testbed">Side A · 01 — Motor Testbed · 2026</a>
       </p>
     </section>
 
-    <!-- ============ 01 — MOTOR TESTBED ============ -->
-    <section class="section" id="projects" aria-labelledby="motor-title">
-      <div class="wrap" id="motor-testbed">
-        <header class="section-head" data-reveal>
-          <p class="track mono"><svg class="disc" viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="9" fill="none" stroke="currentColor" stroke-width="1.2"/><circle cx="10" cy="10" r="5.8" fill="none" stroke="currentColor" stroke-width="0.6"/><circle cx="10" cy="10" r="3" fill="#B23A2B"/></svg>01 — Motor Testbed · 2026</p>
-          <h2 class="section-title" id="motor-title">Edge-to-gateway motor control &amp; telemetry testbed
-            <svg class="stroke" viewBox="0 0 300 14" preserveAspectRatio="none" aria-hidden="true"><path filter="url(#rough)" d="M2 8 C 50 3, 120 4, 180 6 S 270 4, 298 7 L 298 10 C 240 9, 150 12, 90 11 S 20 13, 2 11 Z"/></svg>
-          </h2>
-          <p class="status mono"><span class="status-dot status-ok" aria-hidden="true"></span>Working · personal project · built solo · fall 2026</p>
-        </header>
+    <!-- ============ SIDE A: BUILT PROJECTS ============ -->
+    <div class="side" id="projects">
 
-        <p class="lede" data-reveal>
-          A DC motor I can start, stop and speed-control from a physical button and knob, or from my phone or laptop. An Arduino runs the motor, a Raspberry Pi 5 is the gateway, and a safety net shuts the motor off if the link to the Pi is lost.
-        </p>
+      <!-- Side A · 01 — Motor testbed -->
+      <section class="section" id="motor-testbed" aria-labelledby="motor-title">
+        <div class="frame">
+          <p class="v-label mono">Projects</p>
+          <div class="body body-wide">
+            <header class="section-head" data-reveal>
+              <p class="track mono"><svg class="disc" viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="9" fill="none" stroke="currentColor" stroke-width="1.2"/><circle cx="10" cy="10" r="5.8" fill="none" stroke="currentColor" stroke-width="0.6"/><circle cx="10" cy="10" r="3" class="fill-accent"/></svg>Side A · 01 — Motor Testbed · 2026</p>
+              <h2 class="section-title" id="motor-title">Edge-to-gateway motor control &amp; telemetry testbed
+                <svg class="stroke" viewBox="0 0 300 14" preserveAspectRatio="none" aria-hidden="true"><path filter="url(#rough)" d="M2 8 C 50 3, 120 4, 180 6 S 270 4, 298 7 L 298 10 C 240 9, 150 12, 90 11 S 20 13, 2 11 Z"/></svg>
+              </h2>
+              <p class="status mono"><span class="status-dot status-ok" aria-hidden="true"></span>Working · personal project · built solo · fall 2026</p>
+            </header>
 
-        <figure class="diagram" data-reveal>
-          <div class="diagram-row">
-            <div class="node">
-              <p class="node-layer mono">Interface</p>
-              <h3>Browser dashboard</h3>
-              <p>On/off and a speed slider, from a phone or laptop on the same network.</p>
-            </div>
-            <div class="link mono">
-              <span>HTTP</span>
-              <svg viewBox="0 0 80 12" aria-hidden="true"><path d="M2 6h76M8 1 2 6l6 5M72 1l6 5-6 5" fill="none" stroke="currentColor" stroke-width="1.3"/></svg>
-            </div>
-            <div class="node">
-              <p class="node-layer mono">Gateway</p>
-              <h3>Raspberry Pi 5</h3>
-              <p>Python. Flask server, Mosquitto MQTT broker for commands and telemetry, and a serial bridge to the Arduino.</p>
-            </div>
-            <div class="link mono">
-              <span>USB serial · 9600 baud</span>
-              <svg viewBox="0 0 80 12" aria-hidden="true"><path d="M2 6h76M8 1 2 6l6 5M72 1l6 5-6 5" fill="none" stroke="currentColor" stroke-width="1.3"/></svg>
-              <span><code>&lt;state,speed&gt;</code> down<br><code>&lt;state,speed,pot&gt;</code> up</span>
-            </div>
-            <div class="node node-edge">
-              <p class="node-layer mono">Edge</p>
-              <h3>Arduino Uno R3</h3>
-              <p>Firmware in C: a 4-state machine. Button on D2, knob on A0, motor PWM on D9. Stops the motor by itself if the gateway goes quiet.</p>
-            </div>
-          </div>
-          <figcaption>Three layers. The safety logic lives at the edge, so it still works when everything above it has crashed.</figcaption>
-        </figure>
+            <p class="lede" data-reveal>
+              A DC motor I can start, stop and speed-control from a physical button and knob, or from my phone or laptop. An Arduino runs the motor, a Raspberry Pi 5 is the gateway, and a safety net shuts the motor off if the link to the Pi is lost.
+            </p>
 
-        <div class="failsafe" data-reveal>
-          <p class="failsafe-num mono" aria-hidden="true">2,000<span> ms</span></p>
-          <div>
-            <h3>The fail-safe</h3>
-            <p>The gateway sends the Arduino a steady heartbeat. If none arrives for 2,000&nbsp;ms, the firmware stops the motor and locks into a fault state. Closing the browser tab, pressing Ctrl+C or killing the Python script all end the same way: motor off within the 2-second timeout. The physical button still works afterwards.</p>
+            <figure class="diagram" data-reveal>
+              <div class="diagram-row">
+                <div class="node">
+                  <p class="node-layer mono">Interface</p>
+                  <h3>Browser dashboard</h3>
+                  <p>On/off and a speed slider, from a phone or laptop on the same network.</p>
+                </div>
+                <div class="link mono">
+                  <span>HTTP</span>
+                  <svg viewBox="0 0 80 12" aria-hidden="true"><path d="M2 6h76M8 1 2 6l6 5M72 1l6 5-6 5" fill="none" stroke="currentColor" stroke-width="1.3"/></svg>
+                </div>
+                <div class="node">
+                  <p class="node-layer mono">Gateway</p>
+                  <h3>Raspberry Pi 5</h3>
+                  <p>Python. Flask server, Mosquitto MQTT broker for commands and telemetry, and a serial bridge to the Arduino.</p>
+                </div>
+                <div class="link mono">
+                  <span>USB serial · 9600 baud</span>
+                  <svg viewBox="0 0 80 12" aria-hidden="true"><path d="M2 6h76M8 1 2 6l6 5M72 1l6 5-6 5" fill="none" stroke="currentColor" stroke-width="1.3"/></svg>
+                  <span><code>&lt;state,speed&gt;</code> down<br><code>&lt;state,speed,pot&gt;</code> up</span>
+                </div>
+                <div class="node node-edge">
+                  <p class="node-layer mono">Edge</p>
+                  <h3>Arduino Uno R3</h3>
+                  <p>Firmware in C: a 4-state machine. Button on D2, knob on A0, motor PWM on D9. Stops the motor by itself if the gateway goes quiet.</p>
+                </div>
+              </div>
+              <figcaption>Three layers. The safety logic lives at the edge, so it still works when everything above it has crashed.</figcaption>
+            </figure>
+
+            <div class="failsafe" data-reveal>
+              <p class="failsafe-num mono" aria-hidden="true">2,000<span> ms</span></p>
+              <div>
+                <h3>The fail-safe</h3>
+                <p>The gateway sends the Arduino a steady heartbeat. If none arrives for 2,000&nbsp;ms, the firmware stops the motor and locks into a fault state. Closing the browser tab, pressing Ctrl+C or killing the Python script all end the same way: motor off within the 2-second timeout. The physical button still works afterwards.</p>
+              </div>
+            </div>
+
+            <h3 class="sub mono" data-reveal>Problems I solved</h3>
+            <ol class="problems">
+              <li data-reveal>
+                <p class="problem-n mono">01.1</p>
+                <h4>The knob and the web slider fought each other</h4>
+                <p>Two inputs wanted to set one speed, and electrical noise on the knob reading could look like a turn. I added a 35-count deadband, so the knob only takes over on a real turn and otherwise leaves the web setting alone.</p>
+              </li>
+              <li data-reveal>
+                <p class="problem-n mono">01.2</p>
+                <h4>The motor had to stop if the computer side died</h4>
+                <p>I put the heartbeat timeout and fault lockout in the firmware instead of trusting the PC. The part that can fail is not the part responsible for stopping.</p>
+              </li>
+              <li data-reveal>
+                <p class="problem-n mono">01.3</p>
+                <h4>A background tab tripped the safety net</h4>
+                <p>Browsers slow down timers in tabs you aren't looking at, so the heartbeat went quiet and the motor stopped. I moved the heartbeat tick into a Web Worker, which keeps its timing.</p>
+              </li>
+              <li data-reveal>
+                <p class="problem-n mono">01.4</p>
+                <h4>The if/else chain kept growing</h4>
+                <p>I rewrote the firmware as an explicit state machine with switch/case. The behaviour became predictable and much easier to debug.</p>
+              </li>
+            </ol>
+
+            <div class="two-col">
+              <div data-reveal>
+                <h3 class="sub mono">Hardware</h3>
+                <ul class="spec mono">
+                  <li><span>Controller</span><span>Elegoo Uno R3</span></li>
+                  <li><span>Gateway</span><span>Raspberry Pi 5</span></li>
+                  <li><span>Drive</span><span>S8050 NPN transistor · 330 Ω base resistor</span></li>
+                  <li><span>Protection</span><span>1N4007 flyback diode · 10 µF decoupling</span></li>
+                  <li><span>Inputs</span><span>Push button · potentiometer</span></li>
+                  <li><span>Load</span><span>Small DC motor</span></li>
+                </ul>
+              </div>
+              <div data-reveal>
+                <h3 class="sub mono">Skills shown</h3>
+                <ul class="tags mono">
+                  <li>Embedded C · AVR</li><li>State machines</li><li>PWM motor drive</li><li>Transistor switching</li><li>Serial protocols</li><li>Python</li><li>MQTT · Mosquitto</li><li>Flask</li><li>Raspberry Pi · Linux</li><li>Fail-safe design</li>
+                </ul>
+              </div>
+            </div>
+
+            <h3 class="sub mono" data-reveal>Media &amp; code</h3>
+            <!-- TODO: replace each slot with the real link/media when it exists -->
+            <ul class="slots mono" data-reveal>
+              <li>GitHub repo<span>coming soon</span></li>
+              <li>90-second demo video<span>coming soon</span></li>
+              <li>Breadboard &amp; Pi photo<span>coming soon</span></li>
+              <li>Stop-time test · 20 trials<span>coming soon</span></li>
+            </ul>
+
+            <p class="next" data-reveal><span class="mono">Next</span> Closed-loop speed control with an encoder motor and a PI loop. Not built yet.</p>
           </div>
         </div>
+      </section>
 
-        <h3 class="sub mono" data-reveal>Problems I solved</h3>
-        <ol class="problems">
-          <li data-reveal>
-            <p class="problem-n mono">A1</p>
-            <h4>The knob and the web slider fought each other</h4>
-            <p>Two inputs wanted to set one speed, and electrical noise on the knob reading could look like a turn. I added a 35-count deadband, so the knob only takes over on a real turn and otherwise leaves the web setting alone.</p>
-          </li>
-          <li data-reveal>
-            <p class="problem-n mono">A2</p>
-            <h4>The motor had to stop if the computer side died</h4>
-            <p>I put the heartbeat timeout and fault lockout in the firmware instead of trusting the PC. The part that can fail is not the part responsible for stopping.</p>
-          </li>
-          <li data-reveal>
-            <p class="problem-n mono">A3</p>
-            <h4>A background tab tripped the safety net</h4>
-            <p>Browsers slow down timers in tabs you aren't looking at, so the heartbeat went quiet and the motor stopped. I moved the heartbeat tick into a Web Worker, which keeps its timing.</p>
-          </li>
-          <li data-reveal>
-            <p class="problem-n mono">A4</p>
-            <h4>The if/else chain kept growing</h4>
-            <p>I rewrote the firmware as an explicit state machine with switch/case. The behaviour became predictable and much easier to debug.</p>
-          </li>
-        </ol>
-
-        <div class="two-col">
-          <div data-reveal>
-            <h3 class="sub mono">Hardware</h3>
-            <ul class="spec mono">
-              <li><span>Controller</span><span>Elegoo Uno R3</span></li>
-              <li><span>Gateway</span><span>Raspberry Pi 5</span></li>
-              <li><span>Drive</span><span>S8050 NPN transistor · 330 Ω base resistor</span></li>
-              <li><span>Protection</span><span>1N4007 flyback diode · 10 µF decoupling</span></li>
-              <li><span>Inputs</span><span>Push button · potentiometer</span></li>
-              <li><span>Load</span><span>Small DC motor</span></li>
+      <!-- Side A · 02 — Project Sentinel -->
+      <section class="section section-joined" id="sentinel" aria-labelledby="sentinel-title">
+        <div class="frame">
+          <div class="body">
+            <header class="section-head" data-reveal>
+              <p class="track mono"><svg class="disc" viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="9" fill="none" stroke="currentColor" stroke-width="1.2"/><circle cx="10" cy="10" r="5.8" fill="none" stroke="currentColor" stroke-width="0.6"/><circle cx="10" cy="10" r="3" class="fill-accent"/></svg>Side A · 02 — Project Sentinel · 2026</p>
+              <h2 class="section-title section-title-sm" id="sentinel-title">Computer-vision tracking prototype
+                <svg class="stroke" viewBox="0 0 300 14" preserveAspectRatio="none" aria-hidden="true"><path filter="url(#rough)" d="M2 9 C 40 5, 130 6, 190 8 S 280 5, 298 8 L 298 11 C 230 10, 140 12, 80 10 S 20 12, 2 12 Z"/></svg>
+              </h2>
+              <p class="status mono"><span class="status-dot" aria-hidden="true"></span>Early learning build · completed · built solo</p>
+            </header>
+            <p class="lede" data-reveal>
+              A Raspberry Pi 5 with a camera finds a colored object in the image and turns a servo so the camera follows it along one axis. I built it before I had touched Arduino, to learn the Pi, Linux and computer vision. It is a learning project, not a finished closed-loop controller.
+            </p>
+            <div class="two-col">
+              <div data-reveal>
+                <h3 class="sub mono">How it works</h3>
+                <ul class="plain">
+                  <li>Raspberry Pi 5 running headless, controlled over SSH.</li>
+                  <li>An Arducam captures frames on a background thread, so the main loop always has the newest one.</li>
+                  <li>OpenCV thresholds the image by color, picks the largest contour and computes its center point.</li>
+                  <li>The horizontal distance from the image center drives an SG90 servo toward the target.</li>
+                </ul>
+              </div>
+              <div data-reveal>
+                <h3 class="sub mono">What I learned</h3>
+                <ul class="plain">
+                  <li>Working on a headless Linux machine over SSH.</li>
+                  <li>Basic image processing: thresholding, detection, centroids.</li>
+                  <li>Lighting changes made the detected center jump; a tighter color range and averaging steadied it.</li>
+                  <li>My first feedback loop: measure the error, move to reduce it.</li>
+                </ul>
+              </div>
+            </div>
+            <ul class="tags tags-gap mono" data-reveal>
+              <li>Raspberry Pi 5</li><li>Python</li><li>OpenCV</li><li>GPIO · PWM</li><li>SG90 servo</li><li>Linux · SSH</li>
             </ul>
-          </div>
-          <div data-reveal>
-            <h3 class="sub mono">Skills shown</h3>
-            <ul class="tags mono">
-              <li>Embedded C · AVR</li><li>State machines</li><li>PWM motor drive</li><li>Transistor switching</li><li>Serial protocols</li><li>Python</li><li>MQTT · Mosquitto</li><li>Flask</li><li>Raspberry Pi · Linux</li><li>Fail-safe design</li>
+            <!-- TODO: replace with real media/code when available -->
+            <ul class="slots slots-gap mono" data-reveal>
+              <li>Tracking clip<span>coming soon</span></li>
+              <li>Code<span>coming soon</span></li>
             </ul>
           </div>
         </div>
+      </section>
+    </div>
 
-        <h3 class="sub mono" data-reveal>Media &amp; code</h3>
-        <!-- TODO: replace each slot with the real link/media when it exists -->
-        <ul class="slots mono" data-reveal>
-          <li>GitHub repo<span>coming soon</span></li>
-          <li>90-second demo video<span>coming soon</span></li>
-          <li>Breadboard &amp; Pi photo<span>coming soon</span></li>
-          <li>Stop-time test · 20 trials<span>coming soon</span></li>
-        </ul>
-
-        <p class="next" data-reveal><span class="mono">Next</span> Closed-loop speed control with an encoder motor and a PI loop. Not built yet.</p>
-      </div>
-    </section>
-
-    <!-- ============ 02 — SURE RESEARCH ============ -->
+    <!-- ============ SIDE B: RESEARCH ============ -->
     <section class="section section-alt" id="research" aria-labelledby="research-title">
-      <div class="wrap wrap-narrow">
-        <header class="section-head" data-reveal>
-          <p class="track mono"><svg class="disc" viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="9" fill="none" stroke="currentColor" stroke-width="1.2"/><circle cx="10" cy="10" r="5.8" fill="none" stroke="currentColor" stroke-width="0.6"/><circle cx="10" cy="10" r="3" fill="#B23A2B"/></svg>02 — SURE Research · Summer 2026</p>
-          <h2 class="section-title" id="research-title">Jitter-aware perceptual deadband adaptation for haptic teleoperation over wireless networks
-            <svg class="stroke" viewBox="0 0 300 14" preserveAspectRatio="none" aria-hidden="true"><path filter="url(#rough)" d="M2 7 C 60 4, 110 9, 170 6 S 260 8, 298 5 L 298 9 C 250 11, 160 9, 100 12 S 30 10, 2 11 Z"/></svg>
-          </h2>
-          <p class="status mono"><span class="status-dot" aria-hidden="true"></span>Kent State SURE program · 8 weeks, full-time · with a faculty advisor · proposal stage, no experimental results</p>
-        </header>
-        <p class="lede" data-reveal>
-          In haptic teleoperation an operator feels forces from a remote robot, and that force data is streamed over a network. Perceptual deadband coding cuts the traffic by sending a new sample only when the change is big enough for a person to notice. Over wireless links, jitter (uneven packet timing) is a separate problem from delay, and it is rarely treated as a design target in the encoder. I proposed making the deadband threshold adapt to jitter measured in real time, so the sender backs off when the network gets unsteady. The summer's outcome was a formal research proposal, a background and methodology write-up, and an 8-week implementation roadmap that identifies this gap as a topic worth exploring.
-        </p>
-      </div>
-    </section>
-
-    <!-- ============ 03 — PROJECT SENTINEL ============ -->
-    <section class="section" id="sentinel" aria-labelledby="sentinel-title">
-      <div class="wrap wrap-narrow">
-        <header class="section-head" data-reveal>
-          <p class="track mono"><svg class="disc" viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="9" fill="none" stroke="currentColor" stroke-width="1.2"/><circle cx="10" cy="10" r="5.8" fill="none" stroke="currentColor" stroke-width="0.6"/><circle cx="10" cy="10" r="3" fill="#B23A2B"/></svg>03 — Project Sentinel · 2026</p>
-          <h2 class="section-title section-title-sm" id="sentinel-title">Computer-vision tracking prototype
-            <svg class="stroke" viewBox="0 0 300 14" preserveAspectRatio="none" aria-hidden="true"><path filter="url(#rough)" d="M2 9 C 40 5, 130 6, 190 8 S 280 5, 298 8 L 298 11 C 230 10, 140 12, 80 10 S 20 12, 2 12 Z"/></svg>
-          </h2>
-          <p class="status mono"><span class="status-dot" aria-hidden="true"></span>Early learning build · completed · built solo</p>
-        </header>
-        <p class="lede" data-reveal>
-          A Raspberry Pi 5 with a camera finds a colored object in the image and turns a servo so the camera follows it along one axis. I built it before I had touched Arduino, to learn the Pi, Linux and computer vision. It is a learning project, not a finished closed-loop controller.
-        </p>
-        <div class="two-col">
-          <div data-reveal>
-            <h3 class="sub mono">How it works</h3>
-            <ul class="plain">
-              <li>Raspberry Pi 5 running headless, controlled over SSH.</li>
-              <li>An Arducam captures frames on a background thread, so the main loop always has the newest one.</li>
-              <li>OpenCV thresholds the image by color, picks the largest contour and computes its center point.</li>
-              <li>The horizontal distance from the image center drives an SG90 servo toward the target.</li>
-            </ul>
-          </div>
-          <div data-reveal>
-            <h3 class="sub mono">What I learned</h3>
-            <ul class="plain">
-              <li>Working on a headless Linux machine over SSH.</li>
-              <li>Basic image processing: thresholding, detection, centroids.</li>
-              <li>Lighting changes made the detected center jump; a tighter color range and averaging steadied it.</li>
-              <li>My first feedback loop: measure the error, move to reduce it.</li>
-            </ul>
-          </div>
+      <div class="frame">
+        <p class="v-label mono">Research</p>
+        <div class="body body-narrow">
+          <header class="section-head" data-reveal>
+            <p class="track mono"><svg class="disc" viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="9" fill="none" stroke="currentColor" stroke-width="1.2"/><circle cx="10" cy="10" r="5.8" fill="none" stroke="currentColor" stroke-width="0.6"/><circle cx="10" cy="10" r="3" class="fill-accent"/></svg>Side B · 01 — SURE Research · Summer 2026</p>
+            <h2 class="section-title section-title-sm" id="research-title">Jitter-aware perceptual deadband adaptation for haptic teleoperation over wireless networks
+              <svg class="stroke" viewBox="0 0 300 14" preserveAspectRatio="none" aria-hidden="true"><path filter="url(#rough)" d="M2 7 C 60 4, 110 9, 170 6 S 260 8, 298 5 L 298 9 C 250 11, 160 9, 100 12 S 30 10, 2 11 Z"/></svg>
+            </h2>
+            <p class="status mono"><span class="status-dot" aria-hidden="true"></span>Kent State SURE program · 8 weeks, full-time · with a faculty advisor · proposal stage, no experimental results</p>
+          </header>
+          <p class="lede" data-reveal>
+            In haptic teleoperation an operator feels forces from a remote robot, and that force data is streamed over a network. Perceptual deadband coding cuts the traffic by sending a new sample only when the change is big enough for a person to notice. Over wireless links, jitter (uneven packet timing) is a separate problem from delay, and it is rarely treated as a design target in the encoder. I proposed making the deadband threshold adapt to jitter measured in real time, so the sender backs off when the network gets unsteady. The summer's outcome was a formal research proposal, a background and methodology write-up, and an 8-week implementation roadmap that identifies this gap as a topic worth exploring.
+          </p>
         </div>
-        <ul class="tags mono" data-reveal>
-          <li>Raspberry Pi 5</li><li>Python</li><li>OpenCV</li><li>GPIO · PWM</li><li>SG90 servo</li><li>Linux · SSH</li>
-        </ul>
-        <!-- TODO: replace with real media/code when available -->
-        <ul class="slots mono" data-reveal>
-          <li>Tracking clip<span>coming soon</span></li>
-          <li>Code<span>coming soon</span></li>
-        </ul>
       </div>
     </section>
 
     <!-- ============ LINER NOTES: SKILLS & COURSEWORK ============ -->
-    <section class="section section-alt" id="skills" aria-labelledby="skills-title">
-      <div class="wrap">
-        <header class="section-head" data-reveal>
-          <p class="track mono"><svg class="disc" viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="9" fill="none" stroke="currentColor" stroke-width="1.2"/><circle cx="10" cy="10" r="5.8" fill="none" stroke="currentColor" stroke-width="0.6"/><circle cx="10" cy="10" r="3" fill="#B23A2B"/></svg>Liner notes</p>
-          <h2 class="section-title" id="skills-title">Skills &amp; coursework
-            <svg class="stroke" viewBox="0 0 300 14" preserveAspectRatio="none" aria-hidden="true"><path filter="url(#rough)" d="M2 8 C 70 4, 120 7, 180 5 S 250 9, 298 6 L 298 10 C 240 12, 170 9, 110 11 S 30 13, 2 11 Z"/></svg>
-          </h2>
-        </header>
-        <div class="credits">
-          <div data-reveal>
-            <h3 class="sub mono">Embedded</h3>
-            <ul class="plain">
-              <li>C on Arduino / AVR</li>
-              <li>Finite state machines</li>
-              <li>PWM motor drive</li>
-              <li>Serial protocols</li>
-            </ul>
-          </div>
-          <div data-reveal>
-            <h3 class="sub mono">Software</h3>
-            <ul class="plain">
-              <li>Python</li>
-              <li>OpenCV</li>
-              <li>Flask</li>
-              <li>MQTT (Mosquitto)</li>
-              <li>Raspberry Pi / Linux</li>
-              <li>Git / GitHub <span class="note">(in progress)</span></li>
-            </ul>
-          </div>
-          <div data-reveal>
-            <h3 class="sub mono">Hardware &amp; CAD</h3>
-            <ul class="plain">
-              <li>Autodesk Inventor 2025</li>
-              <li>Transistor switching, flyback protection</li>
-              <li>Breadboard prototyping</li>
-            </ul>
-          </div>
-          <div data-reveal>
-            <h3 class="sub mono">Coursework · through fall 2026</h3>
-            <p class="course">Calculus I–III · Differential Equations · Linear Algebra · Physics I–II · Statics · Dynamics · Strength of Materials · Signals &amp; Circuits · CAD</p>
-            <h3 class="sub mono">Coursework · spring 2027</h3>
-            <p class="course">PLCs · Control Systems · Electronic Devices</p>
+    <section class="section" id="skills" aria-labelledby="skills-title">
+      <div class="frame">
+        <p class="v-label mono">Liner notes</p>
+        <div class="body body-wide">
+          <header class="section-head" data-reveal>
+            <h2 class="section-title" id="skills-title">Skills &amp; coursework
+              <svg class="stroke" viewBox="0 0 300 14" preserveAspectRatio="none" aria-hidden="true"><path filter="url(#rough)" d="M2 8 C 70 4, 120 7, 180 5 S 250 9, 298 6 L 298 10 C 240 12, 170 9, 110 11 S 30 13, 2 11 Z"/></svg>
+            </h2>
+          </header>
+          <div class="credits">
+            <div data-reveal>
+              <h3 class="sub mono">Embedded</h3>
+              <ul class="plain">
+                <li>C on Arduino / AVR</li>
+                <li>Finite state machines</li>
+                <li>PWM motor drive</li>
+                <li>Serial protocols</li>
+              </ul>
+            </div>
+            <div data-reveal>
+              <h3 class="sub mono">Software</h3>
+              <ul class="plain">
+                <li>Python</li>
+                <li>OpenCV</li>
+                <li>Flask</li>
+                <li>MQTT (Mosquitto)</li>
+                <li>Raspberry Pi / Linux</li>
+                <li>Git / GitHub <span class="note">(in progress)</span></li>
+              </ul>
+            </div>
+            <div data-reveal>
+              <h3 class="sub mono">Hardware &amp; CAD</h3>
+              <ul class="plain">
+                <li>Autodesk Inventor 2025</li>
+                <li>Transistor switching, flyback protection</li>
+                <li>Breadboard prototyping</li>
+              </ul>
+            </div>
+            <div class="credits-courses" data-reveal>
+              <h3 class="sub mono">Coursework · through fall 2026</h3>
+              <p class="course">Calculus I–III · Differential Equations · Linear Algebra · Physics I–II · Statics · Dynamics · Strength of Materials · Signals &amp; Circuits · CAD</p>
+              <h3 class="sub mono">Coursework · spring 2027</h3>
+              <p class="course">PLCs · Control Systems · Electronic Devices</p>
+            </div>
           </div>
         </div>
       </div>
@@ -356,41 +372,59 @@
 
     <!-- ============ ABOUT ============ -->
     <section class="section" id="about" aria-labelledby="about-title">
-      <div class="wrap wrap-narrow">
-        <header class="section-head" data-reveal>
-          <p class="track mono"><svg class="disc" viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="9" fill="none" stroke="currentColor" stroke-width="1.2"/><circle cx="10" cy="10" r="5.8" fill="none" stroke="currentColor" stroke-width="0.6"/><circle cx="10" cy="10" r="3" fill="#B23A2B"/></svg>About</p>
-          <h2 class="section-title" id="about-title">Most people call me Tenzo
-            <svg class="stroke" viewBox="0 0 300 14" preserveAspectRatio="none" aria-hidden="true"><path filter="url(#rough)" d="M2 7 C 50 5, 140 8, 200 5 S 270 7, 298 6 L 298 10 C 220 9, 150 12, 90 10 S 20 12, 2 11 Z"/></svg>
-          </h2>
-        </header>
-        <p class="lede" data-reveal>
-          I'm a Mechatronics Engineering undergraduate at Kent State University, graduating in spring 2028. What I like most is controls and embedded motion control: making a motor do exactly what it was told, and making sure it stops when something goes wrong. I use IoT as the supervision layer on top, not the main event.
-        </p>
-        <p data-reveal>
-          In summer 2026 I worked full-time in Kent State's Summer Undergraduate Research Experience on haptic teleoperation over wireless networks. I'm looking for internships and co-ops in commercial automation, embedded systems and controls.
-        </p>
+      <div class="frame">
+        <p class="v-label mono">About</p>
+        <div class="body body-offset">
+          <header class="section-head" data-reveal>
+            <h2 class="section-title" id="about-title">Most people call me Tenzo
+              <svg class="stroke" viewBox="0 0 300 14" preserveAspectRatio="none" aria-hidden="true"><path filter="url(#rough)" d="M2 7 C 50 5, 140 8, 200 5 S 270 7, 298 6 L 298 10 C 220 9, 150 12, 90 10 S 20 12, 2 11 Z"/></svg>
+            </h2>
+          </header>
+          <p class="lede" data-reveal>
+            I'm a Mechatronics Engineering undergraduate at Kent State University, graduating in spring 2028. What I like most is controls and embedded motion control: making a motor do exactly what it was told, and making sure it stops when something goes wrong. I use IoT as the supervision layer on top, not the main event.
+          </p>
+          <p data-reveal>
+            In summer 2026 I worked full-time in Kent State's Summer Undergraduate Research Experience on haptic teleoperation over wireless networks. I'm looking for internships and co-ops in commercial automation, embedded systems and controls.
+          </p>
+        </div>
       </div>
     </section>
 
     <!-- ============ CONTACT ============ -->
     <section class="section section-alt contact" id="contact" aria-labelledby="contact-title">
-      <div class="wrap wrap-narrow">
-        <header class="section-head" data-reveal>
-          <p class="track mono"><svg class="disc" viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="9" fill="none" stroke="currentColor" stroke-width="1.2"/><circle cx="10" cy="10" r="5.8" fill="none" stroke="currentColor" stroke-width="0.6"/><circle cx="10" cy="10" r="3" fill="#B23A2B"/></svg>Contact</p>
-          <h2 class="section-title" id="contact-title">Get in touch
-            <svg class="stroke stroke-red" viewBox="0 0 300 14" preserveAspectRatio="none" aria-hidden="true"><path filter="url(#rough)" d="M2 8 C 60 4, 130 6, 190 7 S 260 4, 298 7 L 298 10 C 230 10, 150 12, 80 11 S 20 13, 2 11 Z"/></svg>
-          </h2>
-        </header>
-        <p class="lede" data-reveal>Email is the fastest way to reach me. I'm glad to talk about internships, co-ops or any of the projects above.</p>
-        <ul class="hero-actions mono" data-reveal>
-          <li><a class="btn btn-primary" href="mailto:norbukhangsampa11@gmail.com">Email</a></li>
-          <li><a class="btn" href="https://www.linkedin.com/in/tenzin-gurung-b2abba362/" target="_blank" rel="noopener">LinkedIn</a></li>
-          <li><a class="btn" href="https://github.com/Norbu-Khangsampa" target="_blank" rel="noopener">GitHub</a></li>
-        </ul>
+      <div class="frame">
+        <p class="v-label mono">Contact</p>
+        <div class="body body-narrow">
+          <header class="section-head" data-reveal>
+            <h2 class="section-title" id="contact-title">Get in touch
+              <svg class="stroke stroke-red" viewBox="0 0 300 14" preserveAspectRatio="none" aria-hidden="true"><path filter="url(#rough)" d="M2 8 C 60 4, 130 6, 190 7 S 260 4, 298 7 L 298 10 C 230 10, 150 12, 80 11 S 20 13, 2 11 Z"/></svg>
+            </h2>
+          </header>
+          <p class="lede" data-reveal>Email is the fastest way to reach me. I'm glad to talk about internships, co-ops or any of the projects above.</p>
+          <ul class="actions mono" data-reveal>
+            <li><a class="btn btn-primary" href="mailto:norbukhangsampa11@gmail.com">Email</a></li>
+            <li><a class="btn" href="https://www.linkedin.com/in/tenzin-gurung-b2abba362/" target="_blank" rel="noopener">LinkedIn</a></li>
+            <li><a class="btn" href="https://github.com/Norbu-Khangsampa" target="_blank" rel="noopener">GitHub</a></li>
+          </ul>
+        </div>
       </div>
     </section>
 
   </main>
+
+  <!-- Seigaiha wave band: one tile of overlapping scales, repeated by an SVG pattern -->
+  <svg class="wave-band" aria-hidden="true" focusable="false">
+    <defs>
+      <g id="scale">
+        <circle r="16" class="scale-line scale-fill"/>
+        <circle r="12" class="scale-line"/><circle r="8" class="scale-line"/><circle r="4" class="scale-line"/>
+      </g>
+      <pattern id="seigaiha" width="32" height="16" patternUnits="userSpaceOnUse" patternTransform="scale(1.4)">
+        <use href="#scale" x="0" y="-16"/><use href="#scale" x="32" y="-16"/><use href="#scale" x="-16" y="-8"/><use href="#scale" x="16" y="-8"/><use href="#scale" x="48" y="-8"/><use href="#scale" x="0" y="0"/><use href="#scale" x="32" y="0"/><use href="#scale" x="-16" y="8"/><use href="#scale" x="16" y="8"/><use href="#scale" x="48" y="8"/><use href="#scale" x="0" y="16"/><use href="#scale" x="32" y="16"/><use href="#scale" x="-16" y="24"/><use href="#scale" x="16" y="24"/><use href="#scale" x="48" y="24"/><use href="#scale" x="0" y="32"/><use href="#scale" x="32" y="32"/>
+      </pattern>
+    </defs>
+    <rect width="100%" height="100%" fill="url(#seigaiha)"/>
+  </svg>
 
   <footer class="site-footer mono">
     <span>© 2026 Tenzin Norbu Gurung</span>

@@ -1,11 +1,19 @@
-// Theme toggle: dark ("night ink") is the default, light ("paper") is optional.
+// Theme toggle: follows the system setting until the visitor picks one.
 (function () {
   var root = document.documentElement;
   var btn = document.getElementById('theme-toggle');
   if (!btn) return;
 
+  var systemDark = window.matchMedia ? window.matchMedia('(prefers-color-scheme: dark)') : null;
+
   function current() {
-    return root.getAttribute('data-theme') === 'light' ? 'light' : 'dark';
+    var set = root.getAttribute('data-theme');
+    if (set === 'light' || set === 'dark') return set;
+    return systemDark && systemDark.matches ? 'dark' : 'light';
+  }
+
+  if (systemDark && systemDark.addEventListener) {
+    systemDark.addEventListener('change', function () { label(); });
   }
 
   function label() {
