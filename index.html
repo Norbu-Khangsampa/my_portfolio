@@ -46,9 +46,13 @@
 
   <header class="site-header">
     <a class="hanko" href="#top" aria-label="Tenzin Norbu Gurung — back to top">
-      <svg viewBox="0 0 44 44" aria-hidden="true">
-        <rect x="2" y="2" width="40" height="40" class="fill-accent" filter="url(#rough-sm)"/>
-        <text x="22" y="27.5" text-anchor="middle" font-size="14.5" letter-spacing="0.5">TNG</text>
+      <!-- Hand-drawn seal: initials T and G cut out of a vermilion square -->
+      <svg viewBox="0 0 44 44" aria-hidden="true" focusable="false">
+        <g filter="url(#rough-sm)">
+          <rect x="2" y="2" width="40" height="40" rx="2" class="fill-accent"/>
+          <rect x="5.5" y="5.5" width="33" height="33" fill="none" class="stroke-on-accent" stroke-width="1.2"/>
+          <path class="seal-mark" d="M9 12.5h11.5M14.75 12.5V32M34.5 15.6C33.2 13.3 31 12.2 28.7 12.2c-4 0-6.2 4.4-6.2 9.8s2.2 9.8 6.2 9.8c3 0 5.6-2 5.6-5.2v-3.5h-5"/>
+        </g>
       </svg>
     </a>
     <nav class="site-nav mono" aria-label="Sections">
@@ -118,9 +122,10 @@
               <circle cx="200" cy="200" r="171" stroke-width="3" stroke-dasharray="60 1014" stroke-linecap="round"/>
               <circle cx="200" cy="200" r="129" stroke-width="3" stroke-dasharray="44 766" stroke-dashoffset="-380" stroke-linecap="round"/>
             </g>
+            <circle cx="200" cy="200" r="68" fill="none" class="stroke-gold" stroke-width="1.5"/>
             <circle cx="200" cy="200" r="62" class="fill-accent"/>
             <circle cx="200" cy="200" r="56" fill="none" class="stroke-on-accent" stroke-width="0.5" opacity="0.6"/>
-            <text class="label-name" x="200" y="186" text-anchor="middle" font-size="17">TNG</text>
+            <text class="label-name" x="200" y="186" text-anchor="middle" font-size="17">TG</text>
             <text class="label-text" x="200" y="226" text-anchor="middle" font-size="6.5">SIDE A · 2026</text>
             <circle cx="200" cy="200" r="4.5" fill="var(--bg)"/>
           </svg>
@@ -406,6 +411,20 @@
     </section>
 
   </main>
+
+  <!-- Seigaiha wave band: one tile of overlapping scales, repeated by an SVG pattern -->
+  <svg class="wave-band" aria-hidden="true" focusable="false">
+    <defs>
+      <g id="scale">
+        <circle r="16" class="scale-line scale-fill"/>
+        <circle r="12" class="scale-line"/><circle r="8" class="scale-line"/><circle r="4" class="scale-line"/>
+      </g>
+      <pattern id="seigaiha" width="32" height="16" patternUnits="userSpaceOnUse" patternTransform="scale(1.4)">
+        <use href="#scale" x="0" y="-16"/><use href="#scale" x="32" y="-16"/><use href="#scale" x="-16" y="-8"/><use href="#scale" x="16" y="-8"/><use href="#scale" x="48" y="-8"/><use href="#scale" x="0" y="0"/><use href="#scale" x="32" y="0"/><use href="#scale" x="-16" y="8"/><use href="#scale" x="16" y="8"/><use href="#scale" x="48" y="8"/><use href="#scale" x="0" y="16"/><use href="#scale" x="32" y="16"/><use href="#scale" x="-16" y="24"/><use href="#scale" x="16" y="24"/><use href="#scale" x="48" y="24"/><use href="#scale" x="0" y="32"/><use href="#scale" x="32" y="32"/>
+      </pattern>
+    </defs>
+    <rect width="100%" height="100%" fill="url(#seigaiha)"/>
+  </svg>
 
   <footer class="site-footer mono">
     <span>© 2026 Tenzin Norbu Gurung</span>

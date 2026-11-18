@@ -59,6 +59,7 @@ h1, h2, h3, h4 { overflow-wrap: break-word; }
 /* Inline SVG colours come from tokens, never hard-coded */
 .fill-accent { fill: var(--accent); }
 .stroke-on-accent { stroke: var(--on-accent); }
+.stroke-gold { stroke: var(--gold); }
 
 /* ---------- Grid ----------
    Twelve columns. Columns 1–2 hold the vertical section label;
@@ -115,10 +116,11 @@ h1, h2, h3, h4 { overflow-wrap: break-word; }
 }
 .hanko:hover { transform: rotate(0deg); }
 .hanko svg { display: block; width: 100%; height: 100%; }
-.hanko text {
-  font-family: var(--font-display);
-  font-weight: 800;
-  fill: var(--on-accent);
+.seal-mark {
+  fill: none;
+  stroke: var(--on-accent);
+  stroke-width: 3.2;
+  stroke-linecap: square;
 }
 
 .site-nav {
@@ -246,12 +248,14 @@ a.btn-primary:hover { background: var(--accent); border-color: var(--accent); co
   transform: translateY(-50%);
   color: var(--text);
 }
+/* The record only turns while the pointer rests on it, and stops where it is */
 .vinyl svg {
   display: block;
   width: 100%;
   height: 100%;
-  animation: spin 48s linear infinite;
+  animation: spin 16s linear infinite paused;
 }
+.vinyl:hover svg { animation-play-state: running; }
 .vinyl .grooves { opacity: var(--groove-opacity); }
 .vinyl .label-text { font-family: var(--font-mono); fill: var(--on-accent); letter-spacing: 0.14em; }
 .vinyl .label-name { font-family: var(--font-display); font-weight: 800; fill: var(--on-accent); }
@@ -277,6 +281,20 @@ a.btn-primary:hover { background: var(--accent); border-color: var(--accent); co
 .now a:hover { border-bottom-color: var(--accent); }
 
 /* ---------- Motion ---------- */
+/* Brush strokes draw in left to right: the slash on load, title strokes on scroll.
+   Without JS they are simply there. */
+.js .slash {
+  clip-path: inset(0 100% 0 0);
+  animation: brush calc(var(--beat) * 2.2) var(--ease) calc(var(--beat) * 1.2) forwards;
+}
+@keyframes brush { to { clip-path: inset(0 0 0 0); } }
+
+.js [data-reveal] .stroke {
+  clip-path: inset(0 100% 0 0);
+  transition: clip-path calc(var(--beat) * 2) var(--ease) calc(var(--beat) / 2);
+}
+.js [data-reveal].is-in .stroke { clip-path: inset(0 0 0 0); }
+
 /* Hero items fade in on load. Only when JS is present. */
 .js .rise {
   opacity: 0;
@@ -301,6 +319,7 @@ a.btn-primary:hover { background: var(--accent); border-color: var(--accent); co
     transition: none !important;
   }
   .js .rise, .js [data-reveal] { opacity: 1; transform: none; }
+  .js .slash, .js [data-reveal] .stroke { clip-path: none; }
 }
 
 /* ---------- Sections ---------- */
@@ -576,6 +595,22 @@ code {
 
 .contact .actions { margin-top: 1.5rem; }
 
+/* ---------- Seigaiha wave band (the page's one pattern) ---------- */
+.wave-band {
+  display: block;
+  width: 100%;
+  height: 4.5rem;
+  border-top: 1px solid var(--rule);
+}
+/* Plain class selectors: circles cloned through <use> don't match ancestor selectors */
+.scale-line {
+  fill: none;
+  stroke: var(--gold);
+  stroke-width: 1;
+  stroke-opacity: 0.7;
+}
+.scale-fill { fill: var(--bg); }
+
 /* ---------- Footer ---------- */
 .site-footer {
   display: flex;
@@ -617,10 +652,10 @@ code {
   .site-nav { width: 100%; gap: 0 0.85rem; }
   .theme-toggle { position: absolute; top: 0.85rem; right: var(--gutter); }
   .vinyl {
-    --v: 15rem;
+    --v: 13rem;
     top: 0;
-    right: -6.5rem;
-    transform: translateY(-30%);
+    right: -6rem;
+    transform: translateY(-48%);
   }
   .section { scroll-margin-top: 6rem; }
   .side { scroll-margin-top: 6rem; }
