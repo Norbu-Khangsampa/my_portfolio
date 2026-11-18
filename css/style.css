@@ -523,18 +523,26 @@ code {
 .spec li span:last-child { text-transform: none; letter-spacing: 0.03em; font-size: var(--step--1); }
 
 /* Tags: a run-on credit line, not boxed chips */
+/* Every tag carries a leading dot. The list is pulled left by one dot's width
+   and that strip is clipped, so the dot at the start of each line is hidden
+   wherever the line happens to wrap. */
 .tags {
+  --sep: 1.6rem;
   display: flex;
   flex-wrap: wrap;
   gap: 0.35rem 0;
-  margin: 0;
+  margin: 0 0 0 calc(-1 * var(--sep));
   padding: 0;
   list-style: none;
   line-height: 1.9;
+  clip-path: inset(0 0 0 var(--sep));
 }
-.tags li + li::before {
+.tags li::before {
   content: "·";
-  margin: 0 0.7rem;
+  content: "·" / "";
+  display: inline-block;
+  width: var(--sep);
+  text-align: center;
   color: var(--accent-text);
 }
 .tags-gap { margin-top: 2.5rem; }
